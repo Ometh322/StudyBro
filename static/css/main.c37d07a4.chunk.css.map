@@ -1,0 +1,1 @@
+{"version":3,"sources":["Student.css"],"names":[],"mappings":"AAAA,SACE,aAAc,CACd,SAAU,CACV,gBAAiB,CACjB,gBACF","file":"main.c37d07a4.chunk.css","sourcesContent":[".Student {\r\n  display: block;\r\n  width: 60%;\r\n  max-width: 1080px;\r\n  margin: 20px auto;\r\n}\r\n"]}
