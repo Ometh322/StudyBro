@@ -19,7 +19,7 @@ const Student = props => (
 				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
 			</PanelHeaderButton>}
 		>
-			Student
+			Довольный Василий
 		</PanelHeader>
 		<img className="Student" src={student} alt="Student Vasya"/>
 	</Panel>

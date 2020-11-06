@@ -1,7 +1,7 @@
 {
   "name": "vk-proj",
   "version": "1.0.0",
-  "description": "",
+  "description": "[<img width=\"134\" src=\"https://vk.com/images/apps/mini_apps/vk_mini_apps_logo.svg\">](https://vk.com/services)",
   "homepage": "./",
   "main": "index.js",
   "scripts": {
@@ -45,5 +45,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ometh322/StudyBro.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ometh322/StudyBro/issues"
   }
 }
