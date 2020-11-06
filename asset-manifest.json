@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/static/css/main.d3b4c95f.chunk.css",
-    "main.js": "/static/js/main.bedd0d82.chunk.js",
-    "main.js.map": "/static/js/main.bedd0d82.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.587629ae.js",
-    "runtime-main.js.map": "/static/js/runtime-main.587629ae.js.map",
-    "static/css/2.8fde3e13.chunk.css": "/static/css/2.8fde3e13.chunk.css",
-    "static/js/2.ce814275.chunk.js": "/static/js/2.ce814275.chunk.js",
-    "static/js/2.ce814275.chunk.js.map": "/static/js/2.ce814275.chunk.js.map",
-    "index.html": "/index.html",
-    "precache-manifest.3d0a346a8c3138f4208bdd8a0eefd5c9.js": "/precache-manifest.3d0a346a8c3138f4208bdd8a0eefd5c9.js",
-    "service-worker.js": "/service-worker.js",
-    "static/css/2.8fde3e13.chunk.css.map": "/static/css/2.8fde3e13.chunk.css.map",
-    "static/css/main.d3b4c95f.chunk.css.map": "/static/css/main.d3b4c95f.chunk.css.map",
-    "static/js/2.ce814275.chunk.js.LICENSE.txt": "/static/js/2.ce814275.chunk.js.LICENSE.txt",
-    "static/media/student.jpg": "/static/media/student.3362bb5b.jpg"
+    "main.css": "/StudyBro/static/css/main.d3b4c95f.chunk.css",
+    "main.js": "/StudyBro/static/js/main.bedd0d82.chunk.js",
+    "main.js.map": "/StudyBro/static/js/main.bedd0d82.chunk.js.map",
+    "runtime-main.js": "/StudyBro/static/js/runtime-main.df43eec4.js",
+    "runtime-main.js.map": "/StudyBro/static/js/runtime-main.df43eec4.js.map",
+    "static/css/2.8fde3e13.chunk.css": "/StudyBro/static/css/2.8fde3e13.chunk.css",
+    "static/js/2.5957cd05.chunk.js": "/StudyBro/static/js/2.5957cd05.chunk.js",
+    "static/js/2.5957cd05.chunk.js.map": "/StudyBro/static/js/2.5957cd05.chunk.js.map",
+    "index.html": "/StudyBro/index.html",
+    "precache-manifest.0d4290fd05badb6642714254e212c5c1.js": "/StudyBro/precache-manifest.0d4290fd05badb6642714254e212c5c1.js",
+    "service-worker.js": "/StudyBro/service-worker.js",
+    "static/css/2.8fde3e13.chunk.css.map": "/StudyBro/static/css/2.8fde3e13.chunk.css.map",
+    "static/css/main.d3b4c95f.chunk.css.map": "/StudyBro/static/css/main.d3b4c95f.chunk.css.map",
+    "static/js/2.5957cd05.chunk.js.LICENSE.txt": "/StudyBro/static/js/2.5957cd05.chunk.js.LICENSE.txt",
+    "static/media/student.jpg": "/StudyBro/static/media/student.3362bb5b.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.587629ae.js",
+    "static/js/runtime-main.df43eec4.js",
     "static/css/2.8fde3e13.chunk.css",
-    "static/js/2.ce814275.chunk.js",
+    "static/js/2.5957cd05.chunk.js",
     "static/css/main.d3b4c95f.chunk.css",
     "static/js/main.bedd0d82.chunk.js"
   ]
