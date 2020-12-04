@@ -7,12 +7,12 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
-import student from '../img/student.jpg';
+import testAlena from '../img/student.jpg';
 import './Student.css';
 
 const osName = platform();
 
-const Student = props => (
+const Alena = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="home">
@@ -21,13 +21,13 @@ const Student = props => (
 		>
 			Довольный  Василий
 		</PanelHeader>
-		<img className="Student" src={student} alt="Student Vasya"/>
+		<img className="Alena" src={testAlena} alt="Student Vasya"/>
 	</Panel>
 );
 
-Student.propTypes = {
+Alena.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default Student;
+export default Alena;
