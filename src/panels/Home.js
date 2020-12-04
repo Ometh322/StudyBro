@@ -28,6 +28,7 @@ const Home = ({ id, go, fetchedUser }) => (
 				</Button>
 				<Button size="xl" level="2" onClick={go} data-to="persik">
 					Тест Артем
+				</Button>
 				<Button size="xl" level="4" onClick={go} data-to="group">
 					Открыть cписок группы
 				</Button>
