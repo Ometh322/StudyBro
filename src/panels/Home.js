@@ -42,8 +42,6 @@ const Home = ({ id, go, fetchedUser }) => (
 				</Button>
 				<Button size="xl" level="4" onClick={go} data-to="vlad">
 					Пнуть влада
-
-
 				</Button>
 			</Div>
 		</Group>

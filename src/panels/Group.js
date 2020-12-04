@@ -7,7 +7,7 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
-import group from '../img/student.jpg';
+import group from '../img/group.jpg';
 const osName = platform();
 
 const Group = props => (
@@ -28,4 +28,3 @@ Group.propTypes = {
 };
 
 export default Group
-
