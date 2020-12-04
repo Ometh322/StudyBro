@@ -7,10 +7,16 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
-import persik from '../img/persik.png';
+import ArticleList from "../components/ArticleList"
+import articles from "../components/fixtures"
+
 import './Student.css';
 
 const osName = platform();
+
+const handleClick = () => {
+	console.log('---', 'clicked')
+};
 
 const Persik = props => (
 	<Panel id={props.id}>
@@ -19,9 +25,19 @@ const Persik = props => (
 				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
 			</PanelHeaderButton>}
 		>
-			Персик
+			Новости
 		</PanelHeader>
-		<img className="Persik" src={persik} alt="Persik"/>
+		<div>
+            <div>
+                <h1>
+                    Последние новости
+                    <button onClick={handleClick}>
+                        Какая-то кнопка
+                    </button>
+                </h1>
+            </div>
+            <ArticleList articles={articles} />
+        </div>
 	</Panel>
 );
 
