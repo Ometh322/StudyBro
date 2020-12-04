@@ -8,6 +8,7 @@ import Home from './panels/Home';
 import Student from './panels/Student';
 import Persik from './panels/Artem';
 import Group from './panels/Group';
+import Vlad from './panels/Vlad';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -42,6 +43,7 @@ const App = () => {
 			<Student id='student' go={go} />
 			<Persik id='persik' go={go} />
 			<Group id='group' go={go}/>
+			<Vlad id='vlad' go={go}/>
 		</View>
 	);
 }
