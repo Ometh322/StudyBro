@@ -6,7 +6,13 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Student from './panels/Student';
+
 import HomeTasks from './panels/HomeTasks';
+
+import Persik from './panels/Artem';
+import Group from './panels/Group';
+import Vlad from './panels/Vlad';
+
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -39,7 +45,13 @@ const App = () => {
 		<View activePanel={activePanel}>
 			<Home id='home' fetchedUser={fetchedUser} go={go} />
 			<Student id='student' go={go} />
+
 			<HomeTasks id='HomeTasks' go={go} />
+
+			<Persik id='persik' go={go} />
+			<Group id='group' go={go}/>
+			<Vlad id='vlad' go={go}/>
+
 		</View>
 	);
 }
