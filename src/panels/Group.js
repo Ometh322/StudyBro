@@ -28,3 +28,4 @@ Group.propTypes = {
 };
 
 export default Group
+
