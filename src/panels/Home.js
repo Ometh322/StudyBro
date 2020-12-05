@@ -34,14 +34,17 @@ const Home = ({ id, go, fetchedUser }) => (
 				<Button size="xl" level="2" onClick={go} data-to="HomeTasks">
 					Посмотреть домашки
 				</Button>
+
 				<Button size="xl" level="2" onClick={go} data-to="persik">
-					Тест Артем
+					Новости
 				</Button>
+
 				<Button size="xl" level="4" onClick={go} data-to="group">
 					Открыть cписок группы
 				</Button>
-				<Button size="xl" level="4" onClick={go} data-to="vlad">
-					Пнуть влада
+
+				<Button size="xl" level="4" onClick={go} data-to="appinfo">
+					О приложении
 				</Button>
 			</Div>
 		</Group>
