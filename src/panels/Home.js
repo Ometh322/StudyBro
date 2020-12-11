@@ -23,27 +23,31 @@ const Home = ({ id, go, fetchedUser }) => (
 
 		<Group title="Navigation Example">
 			<Div>
-				<Button size="xl" level="2" onClick={go} data-to="student">
-					Погладить Васю
+				<Button size="xl" level="3" onClick={go} data-to="student">
+					Расписание
 				</Button>
 
 				<Button size="xl" level="2" onClick={go} data-to="alena">
-					Тест Алены
+					Голосование
 				</Button>
 
-				<Button size="xl" level="2" onClick={go} data-to="HomeTasks">
-					Посмотреть домашки
+				<Button size="xl" level="4" onClick={go} data-to="HomeTasks">
+					Домашние задания
 				</Button>
 
-				<Button size="xl" level="2" onClick={go} data-to="persik">
+				<Button size="xl" level="1" onClick={go} data-to="persik">
 					Новости
 				</Button>
 
-				<Button size="xl" level="4" onClick={go} data-to="group">
-					Открыть cписок группы
+				<Button size="xl" level="5" onClick={go} data-to="group">
+					Лекции
 				</Button>
 
-				<Button size="xl" level="4" onClick={go} data-to="appinfo">
+				{/* <Button size="xl" level="6" onClick={go} data-to="group">
+					Открыть cписок группы
+				</Button> */}
+
+				<Button size="xl" level="7" onClick={go} data-to="appinfo">
 					О приложении
 				</Button>
 			</Div>
