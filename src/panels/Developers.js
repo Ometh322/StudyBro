@@ -6,28 +6,34 @@ import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader
 import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
+import Icon24Home from '@vkontakte/icons/dist/24/home';
 
-import student from '../img/Vlad.jpg';
+import DevelopersList from '../img/Developers.jpg';
 import './Student.css';
 
 const osName = platform();
 
-const Student = props => (
+const Developers = props => (
 	<Panel id={props.id}>
 		<PanelHeader
-			left={<PanelHeaderButton onClick={props.go} data-to="home">
+			left={<PanelHeaderButton onClick={props.go} data-to="appinfo">
 				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+				Назад
+			</PanelHeaderButton>}
+			right={<PanelHeaderButton onClick={props.go} data-to="home">
+				{<Icon24Home/>}
+				На стартовую страницу
 			</PanelHeaderButton>}
 		>
-			Недовольный Влад
+			Авторы приложения
 		</PanelHeader>
-		<img className="Student" src={student} alt="Student Vlad"/>
+		<img className="Developers" src={DevelopersList} alt="Developers"/>
 	</Panel>
 );
 
-Student.propTypes = {
+Developers.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default Student;
+export default Developers;

@@ -27,13 +27,13 @@ const Home = ({ id, go, fetchedUser }) => (
 			<Div>
 			    <Div>
 				  <Button size="xl" mode="secondary" onClick={go} data-to="student">
-					Список группы 
+					Расписание
 				  </Button>
 				</Div>
 
 				<Div>
 				  <Button size="xl" mode="secondary" onClick={go} data-to="alena">
-					Лекции
+					Голосование
 				  </Button>
                 </Div>
 
@@ -51,15 +51,16 @@ const Home = ({ id, go, fetchedUser }) => (
 
 				<Div>
 				  <Button size="xl" mode="secondary" onClick={go} data-to="group">
-					...
+					Лекции
 				  </Button>
 				</Div>
 
 			    <Div>
-				  <Button size="xl" mode="secondary" onClick={go} data-to="vlad">
-					...
+				  <Button size="xl" mode="secondary" onClick={go} data-to="appinfo">
+					О приложении
 				  </Button>
 				</Div>
+
 			</Div>
 		</Group>
 	</Panel>
