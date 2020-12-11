@@ -8,7 +8,7 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
 import ArticleList from "../components/ArticleList"
-import articles1 from "../components/fixtures"
+import articles1 from "../components/fixtures.json"
 
 import './Student.css';
 // import { render } from 'react-dom';
