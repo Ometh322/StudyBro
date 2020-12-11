@@ -1,4 +1,6 @@
 import React, {Component} from 'react'
+import Button from '@vkontakte/vkui/dist/components/Button/Button';
+import IconDropDown from '@vkontakte/icons/dist/12/dropdown';
 
 class Article extends Component {
     state = {
@@ -20,9 +22,10 @@ class Article extends Component {
             <div> 
                 <h2>
                     {article.title}
-                    <button onClick={this.handleClick}>
+                    
+                    <Button before={<IconDropDown/>} mode="secondary" onClick={this.handleClick}>
                         {this.state.isOpen ? 'Скрыть подробности' : 'Подробнее'}
-                    </button>
+                    </Button>
                 </h2>
             </div>
             <div>

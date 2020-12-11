@@ -7,10 +7,12 @@ import Group from '@vkontakte/vkui/dist/components/Group/Group';
 import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
+import Counter from '@vkontakte/vkui/dist/components/Counter/Counter';
+
 
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
-		<PanelHeader>Возможность погладить Васю</PanelHeader>
+		<PanelHeader>StudyBro</PanelHeader>
 		{fetchedUser &&
 		<Group title="User Data Fetched with VK Bridge">
 			<Cell
@@ -23,28 +25,41 @@ const Home = ({ id, go, fetchedUser }) => (
 
 		<Group title="Navigation Example">
 			<Div>
-				<Button size="xl" level="2" onClick={go} data-to="student">
-					Погладить Васю
-				</Button>
+			    <Div>
+				  <Button size="xl" mode="secondary" onClick={go} data-to="student">
+					Список группы 
+				  </Button>
+				</Div>
 
-				<Button size="xl" level="2" onClick={go} data-to="alena">
-					Тест Алены
-				</Button>
+				<Div>
+				  <Button size="xl" mode="secondary" onClick={go} data-to="alena">
+					Лекции
+				  </Button>
+                </Div>
 
-				<Button size="xl" level="2" onClick={go} data-to="HomeTasks">
-					Посмотреть домашки
-				</Button>
-				<Button size="xl" level="2" onClick={go} data-to="persik">
-					Тест Артем
-				</Button>
-				<Button size="xl" level="4" onClick={go} data-to="group">
-					Открыть cписок группы
-				</Button>
-				<Button size="xl" level="4" onClick={go} data-to="vlad">
-					Пнуть влада
+				<Div>
+				  <Button size="xl" mode="secondary" onClick={go} data-to="HomeTasks">
+					Домашние задания
+				  </Button>
+				</Div>
 
+				<Div>
+				  <Button after={<Counter>2</Counter>} size="xl" mode="secondary"onClick={go} data-to="persik">
+					Новости
+				  </Button>
+				</Div>
 
-				</Button>
+				<Div>
+				  <Button size="xl" mode="secondary" onClick={go} data-to="group">
+					...
+				  </Button>
+				</Div>
+
+			    <Div>
+				  <Button size="xl" mode="secondary" onClick={go} data-to="vlad">
+					...
+				  </Button>
+				</Div>
 			</Div>
 		</Group>
 	</Panel>
