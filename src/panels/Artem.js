@@ -9,7 +9,7 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 // import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import ArticleList from "../components/ArticleList"
 
-import articles from "../components/fixtures"
+//import articles from "../components/fixtures"
 import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 // import IconNews from '@vkontakte/icons/dist/20/newsfeed_outline';
@@ -27,10 +27,12 @@ import articles1 from "../components/fixtures.json"
 
 
 import './Student.css';
+// import { set } from 'core-js/fn/dict';
 // import { render } from 'react-dom';
 
 function Persik(props) {
 const [articles, setArticles] = React.useState(articles1)
+const [text, setText] = React.useState('Сортировать: сначала новые')
 const osName = platform();
 
 function getRandomInt(min, max) {
@@ -54,9 +56,25 @@ const handleClick = () => {
 
 };
 
+//состояние (реверса)
+let state = {
+	reverted: false,
+	textOpen: 'open',
+	textClose: 'close'
+	// text: 'op'
+}
 
+// let text = state.textOpen
 
-
+//реверс списка
+const revert = () => {
+	setArticles(articles.reverse().concat())
+	// state.text = state.reverted ? state.textOpen : state.textClose
+	state.reverted = !state.reverted;
+	text === 'Сортировать: сначала старые' ? setText('Сортировать: сначала новые') : setText('Сортировать: сначала старые')
+	console.log(state.reverted)
+	// console.log(state.text)
+	}
 
 //добавление новости
 function addTodo(titleIn) {
@@ -87,10 +105,13 @@ return (
                     <CellButton  before={<Icon16Add/>} onClick={handleClick}>
                         Добавить новость
                     </CellButton>
+					<button className="btn btn-primary" onClick = {revert}>
+					    {text}
+        			</button>
                     <Separator />
                 </h1>
             </div>
-            <ArticleList articles={articles} />
+            <ArticleList articles={state.reverted ? articles.reverse() : articles} />
         </div>
 
 	</Panel>
