@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 // import PropTypes from 'prop-types';
-import { platform, IOS } from '@vkontakte/vkui';
+import { platform, IOS} from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
@@ -32,6 +32,7 @@ import './Student.css';
 
 function Persik(props) {
 const [articles, setArticles] = React.useState(articles1)
+const [copyArticles, setCopyArticles] = React.useState(articles)
 const [text, setText] = React.useState('Сортировать: сначала новые')
 const osName = platform();
 
@@ -46,14 +47,21 @@ const handleClick = () => {
 	// 	title: "Практическая работа", 
 	// 	text: "Практическая работа по экономике"
 	// }])
-	setArticles(
-		articles.concat([{ //посмотреть что с ключами(id)
-				id:   getRandomInt(30, 1000000), date: "2020-12-01", 
-				title: "Практическая работа", 
-				text: "Практическая работа по экономике"
-			}])
+	let inf = { //посмотреть что с ключами(id)
+		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
+		title: "Практическая работа", 
+		text: "Практическая работа по экономике"
+	}	
+	if (text === 'Сортировать: сначала новые') {
+		setArticles(
+			articles.concat([inf])
+		  )
+	}
+	else {
+		setArticles(
+			articles.reverse().concat([inf]).reverse()
 	  )
-
+	}
 };
 
 //состояние (реверса)
@@ -78,14 +86,33 @@ const revert = () => {
 
 //добавление новости
 function addTodo(titleIn) {
-    setArticles(
-		articles.concat([{ //посмотреть что с ключами(id)
-				id:   getRandomInt(30, 1000000), date: "2020-12-05", 
-				title: titleIn, 
-				text: "Новость в разработке"
-			}])
-	  )
+	let inf = { //посмотреть что с ключами(id)
+		id:   getRandomInt(30, 1000000), date: "2020-12-05", 
+		title: titleIn, 
+		text: "Новость в разработке"
+	}
+	if (text === 'Сортировать: сначала новые') //новости в правильном порядке (добавление в конец)
+	{
+		setArticles(articles.concat([inf]))
+	} 
+	else //новости в неправильном порядке (добавление в начало)
+	{
+		setArticles(articles.reverse().concat([inf]).reverse())
+	}
   }
+
+  
+//поиск новости
+function searchTodo(titleIn) {
+	setCopyArticles(articles);
+	setArticles(copyArticles.filter(function(x) {
+		return x.title.toLowerCase().includes(titleIn.toLowerCase()) ;
+	  }));
+	  console.log("search")
+  }
+
+
+
 
 return (
 
@@ -102,6 +129,7 @@ return (
                 <h1>
                     Последние 
 					<AddTodo onCreate={addTodo}/>
+					<SearchTodo onCreate={searchTodo}/>
                     <CellButton  before={<Icon16Add/>} onClick={handleClick}>
                         Добавить новость
                     </CellButton>
@@ -140,6 +168,26 @@ function AddTodo({onCreate}) {
         </form>
     )
 }
+
+function SearchTodo({onCreate}) {
+	const [value, setValue] = useState('')
+
+	function submitHandler(event) {
+		event.preventDefault()
+
+		if (value.trim()) {
+			onCreate(value)
+		}
+	}
+
+    return (
+        <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
+            <input value={value} onChange={event => setValue(event.target.value)}/>
+            <button type="submit">Найти новость</button>
+        </form>
+    )
+}
+
 }
 
 
