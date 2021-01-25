@@ -6,25 +6,32 @@ import { IOS, platform } from '@vkontakte/vkui';
 import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
+import Icon24Document from '@vkontakte/icons/dist/24/document';
+import Group from '@vkontakte/vkui/dist/components/Group/Group';
+import Header from '@vkontakte/vkui/dist/components/Header/Header';
+import File from '@vkontakte/vkui/dist/components/File/File';
 
-import group from '../img/group.jpg';
 const osName = platform();
 
-const Group = props => (
+const Groups = props => (
     <Panel id={props.id}>
         <PanelHeader
             left={<PanelHeaderButton onClick={props.go} data-to="home">
                 {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
             </PanelHeaderButton>}>
-            Список группы
+            Лекции
         </PanelHeader>
-        <img className="Group" src={group} alt="Group 311"/>
+        <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
+          <File before={<Icon24Document  />} controlSize="m">
+            Выберете файл
+          </File>
+        </Group>
     </Panel>
 )
 
-Group.propTypes = {
+Groups.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default Group
+export default Groups

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+
 // import PropTypes from 'prop-types';
 import { platform, IOS} from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -8,18 +9,18 @@ import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 // import Button from '@vkontakte/vkui/dist/components/Button/Button';
 import ArticleList from "../components/ArticleList"
-
 //import articles from "../components/fixtures"
 import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
 import Icon16Add from '@vkontakte/icons/dist/16/add';
+import Icon16Search from '@vkontakte/icons/dist/16/search';
 // import IconNews from '@vkontakte/icons/dist/20/newsfeed_outline';
 import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
 // import View from '@vkontakte/vkui/dist/components/View/View';
-// import Group from '@vkontakte/vkui/dist/components/Group/Group';
-// import Header from '@vkontakte/vkui/dist/components/Header/Header';
+import Group from '@vkontakte/vkui/dist/components/Group/Group';
+import Header from '@vkontakte/vkui/dist/components/Header/Header';
 // import Div from '@vkontakte/vkui/dist/components/Div/Div';
-// import WriteBar from '@vkontakte/vkui/dist/components/WriteBar/WriteBar';
-// import WriteBarIcon from '@vkontakte/vkui/dist/components/WriteBarIcon/WriteBarIcon';
+import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
+import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 
 
@@ -40,29 +41,32 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
   }
 
-const handleClick = () => {
-	console.log('---', 'clicked')
-	// setArticles([{
-	// 	id: 6, date: "2020-12-01", 
-	// 	title: "Практическая работа", 
-	// 	text: "Практическая работа по экономике"
-	// }])
-	let inf = { //посмотреть что с ключами(id)
-		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
-		title: "Практическая работа", 
-		text: "Практическая работа по экономике"
-	}	
-	if (text === 'Сортировать: сначала новые') {
-		setArticles(
-			articles.concat([inf])
-		  )
-	}
-	else {
-		setArticles(
-			articles.reverse().concat([inf]).reverse()
-	  )
-	}
-};
+
+  //Чье это?? у меня не запустилось с этой штучкой
+  
+// const handleClick = () => {
+// 	console.log('---', 'clicked')
+// 	// setArticles([{
+// 	// 	id: 6, date: "2020-12-01", 
+// 	// 	title: "Практическая работа", 
+// 	// 	text: "Практическая работа по экономике"
+// 	// }])
+// 	let inf = { //посмотреть что с ключами(id)
+// 		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
+// 		title: "Практическая работа", 
+// 		text: "Практическая работа по экономике"
+// 	}	
+// 	if (text === 'Сортировать: сначала новые') {
+// 		setArticles(
+// 			articles.concat([inf])
+// 		  )
+// 	}
+// 	else {
+// 		setArticles(
+// 			articles.reverse().concat([inf]).reverse()
+// 	  )
+// 	}
+// };
 
 //состояние (реверса)
 let state = {
@@ -126,20 +130,18 @@ return (
 		</PanelHeader>
 		<div>
             <div>
-                <h1>
+			   <Header mode="tertiary">
                     Последние 
 					<AddTodo onCreate={addTodo}/>
 					<SearchTodo onCreate={searchTodo}/>
-                    <CellButton  before={<Icon16Add/>} onClick={handleClick}>
-                        Добавить новость
-                    </CellButton>
 					<button className="btn btn-primary" onClick = {revert}>
 					    {text}
         			</button>
                     <Separator />
-                </h1>
+				</Header>
             </div>
             <ArticleList articles={state.reverted ? articles.reverse() : articles} />
+			<Checkbox>Закрепить сообщение с запросом</Checkbox>
         </div>
 
 	</Panel>
@@ -162,10 +164,15 @@ function AddTodo({onCreate}) {
 	}
 
     return (
-        <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
-            <input value={value} onChange={event => setValue(event.target.value)}/>
-            <button type="submit">Добавить свою новость</button>
-        </form>
+		<Group>
+			  
+          <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
+			<Textarea size ='s'
+			defaultValue="Сообщите нам что-то важное!"
+            input value={value} onChange={event => setValue(event.target.value)} />
+			<CellButton  before={<Icon16Add/>} > Добавить новость</CellButton>
+          </form>
+		</Group>
     )
 }
 
@@ -182,17 +189,16 @@ function SearchTodo({onCreate}) {
 
     return (
         <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
-            <input value={value} onChange={event => setValue(event.target.value)}/>
-            <button type="submit">Найти новость</button>
+           <Textarea
+		    input value={value} onChange={event => setValue(event.target.value)}
+			/>
+              <CellButton before={<Icon16Search/>}size="l">Найти новость</CellButton>
+
         </form>
     )
 }
 
 }
-
-
-
-  
 
 
 export default Persik;

@@ -10,6 +10,8 @@ import Avatar from '@vkontakte/vkui/dist/components/Avatar/Avatar';
 import Counter from '@vkontakte/vkui/dist/components/Counter/Counter';
 
 
+
+
 const Home = ({ id, go, fetchedUser }) => (
 	<Panel id={id}>
 		<PanelHeader>StudyBro</PanelHeader>
@@ -60,11 +62,15 @@ const Home = ({ id, go, fetchedUser }) => (
 					О приложении
 				  </Button>
 				</Div>
-
 			</Div>
 		</Group>
 	</Panel>
+
+	
 );
+
+
+
 
 Home.propTypes = {
 	id: PropTypes.string.isRequired,
