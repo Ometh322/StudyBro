@@ -7,7 +7,7 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 
-import student from '../img/student.jpg';
+import student from '../img/TimeTable.jpg';
 import './Student.css';
 
 const osName = platform();
@@ -19,7 +19,7 @@ const Student = props => (
 				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
 			</PanelHeaderButton>}
 		>
-			Довольный  Василий
+			Расписание
 		</PanelHeader>
 		<img className="Student" src={student} alt="Student Vasya"/>
 	</Panel>
