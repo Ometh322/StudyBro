@@ -73,7 +73,7 @@ const thematics = [
     }
   }
 
-const Groups = props => (
+const Lections = props => (
     <Panel id={props.id}>
         <PanelHeader
             left={<PanelHeaderButton onClick={props.go} data-to="home">
@@ -83,7 +83,7 @@ const Groups = props => (
         </PanelHeader>
         <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
           <File before={<Icon24Document />} controlSize="m">
-            Выберете файл
+            Выберите файл
           </File>
         </Group>
         <SimpleSearch/>
@@ -93,12 +93,12 @@ const Groups = props => (
 
 
 
-Groups.propTypes = {
+Lections.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default Groups
+export default Lections
 
 
 

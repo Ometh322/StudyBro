@@ -9,7 +9,7 @@ import Student from './panels/Student';
 import Alena from './panels/Alena';
 import HomeTasks from './panels/HomeTasks';
 import Persik from './panels/Artem';
-import Group from './panels/Group';
+import Lections from './panels/Lections';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
 
@@ -47,7 +47,7 @@ const App = () => {
 			<Alena id='alena' go={go} />
 			<HomeTasks id='HomeTasks' go={go} />
 			<Persik id='persik' go={go} />
-			<Group id='group' go={go}/>
+			<Lections id='lections' go={go}/>
 			<AppInfo id='appinfo' go={go}/>
 			<Developers id='developers' go={go}/>
 		</View>

@@ -25,9 +25,9 @@ import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
 import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 
-import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
-import Icon16Add from '@vkontakte/icons/dist/16/add';
-import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
+// import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
+// import Icon16Add from '@vkontakte/icons/dist/16/add';
+// import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
 
 
 

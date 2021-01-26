@@ -52,7 +52,7 @@ const Home = ({ id, go, fetchedUser }) => (
 				</Div>
 
 				<Div>
-				  <Button size="xl" mode="secondary" onClick={go} data-to="group">
+				  <Button size="xl" mode="secondary" onClick={go} data-to="lections">
 					Лекции
 				  </Button>
 				</Div>
