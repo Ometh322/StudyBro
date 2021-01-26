@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import '@vkontakte/vkui/dist/vkui.css';
-
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
 import { IOS, platform } from '@vkontakte/vkui';
@@ -18,7 +16,7 @@ import Cell from '@vkontakte/vkui/dist/components/Cell/Cell';
 import Footer from '@vkontakte/vkui/dist/components/Footer/Footer';
 
 const osName = platform();
-
+// Список лекционных предметов
 const thematics = [
     {id: 1, name: "Алгебра"},
     {id: 2, name: "История"},
@@ -34,10 +32,21 @@ const thematics = [
     {id: 12, name: "Базы данных"},
     {id: 13, name: "Языки программирования"},
     {id: 14, name: "Компьютерные сети"},
-    {id: 15, name: "Теоретическая иформатика"},
+    {id: 15, name: "Структуры данных и алгоритмы"},
+    {id: 16, name: "Компьютерная графика"},
+    {id: 17, name: "Формальные языки и грамматики"},
+    {id: 18, name: "Теория графов"},
+    {id: 19, name: "Методы вычислений"},
+    {id: 20, name: "Технологии программирования"},
+    {id: 21, name: "Педагокика и психология"},
+    {id: 22, name: "Системы искуссвтенного интеллекта"},
+    {id: 23, name: "Прикладная уневерсальная алгебра"},
+    {id: 24, name: "Физические основы построения ЭВМ"},
+    {id: 25, name: "Математические основы искусственного интеллекта"},
+    {id: 26, name: "Системы и сети пердачи информации"},
   ];
 
-
+// Поиск по предметам
   class SimpleSearch extends React.Component {
 
     constructor (props) {
@@ -69,6 +78,7 @@ const thematics = [
   }
 
 const Lections = props => (
+
     <Panel id={props.id}>
         <PanelHeader
             left={<PanelHeaderButton onClick={props.go} data-to="home">
@@ -76,10 +86,11 @@ const Lections = props => (
             </PanelHeaderButton>}>
             Лекции
         </PanelHeader>
-        <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
+        <Group header={<Header mode="secondary">Загрузите лекции</Header>}> 
           <File before={<Icon24Document />} controlSize="m">
             Выберите файл
           </File>
+          
         </Group>
         <SimpleSearch/>
     </Panel>
