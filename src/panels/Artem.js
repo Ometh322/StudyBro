@@ -211,6 +211,7 @@ function AddTodo({onCreate}) {
 		if (value.trim()) {
 			onCreate(value)
 		}
+	}
 
 		return (
 			<Group>
@@ -224,7 +225,7 @@ function AddTodo({onCreate}) {
 			</Group>
 		)
 	}
-}
+
 
 	function SearchTodo({ onCreate }) {
 		const [value, setValue] = useState('')
