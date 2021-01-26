@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, Fragment } from 'react';
 // import PropTypes from 'prop-types';
 import { platform, IOS} from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
@@ -21,13 +21,23 @@ import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
 import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import articles1 from "../components/fixtures.json"
+import bridge from '@vkontakte/vk-bridge';
+import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import './Student.css';
+
+
+let STORAGE_KEYS = {
+	VALUE: 11
+}
+
 
 function Persik(props) {
 const [articles, setArticles] = React.useState(articles1)
 const [copyArticles, setCopyArticles] = React.useState(articles)
 const [text, setText] = React.useState('Сортировать: сначала новые')
+const [valueInfo, setValueInfo] = React.useState(1)
 const osName = platform();
+
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
@@ -92,8 +102,9 @@ const revert = () => {
 	// state.text = state.reverted ? state.textOpen : state.textClose
 	state.reverted = !state.reverted;
 	text === 'Сортировать: сначала старые' ? setText('Сортировать: сначала новые') : setText('Сортировать: сначала старые')
-	console.log(state.reverted)
+	//console.log(state.reverted)
 	// console.log(state.text)
+	saveValue()
 	}
 
 //добавление новости
@@ -111,6 +122,7 @@ function addTodo(titleIn) {
 	{
 		setArticles(articles.reverse().concat([inf]).reverse())
 	}
+	getValue()
   }
 
 //поиск новости
@@ -121,6 +133,31 @@ function searchTodo(titleIn) {
 	  }));
 	  console.log("search")
   }
+
+
+useEffect(() => {
+	async function fetchData() {
+		//const user = await bridge.send('VKWebAppGetUserInfo');
+		//setValueInfo(user);
+		const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: STORAGE_KEYS.VALUE});
+		setValueInfo(valueInformation);
+	}
+	fetchData();
+}, []);
+
+const getValue = async () => {
+	const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: [valueInfoStorage]});
+	setValueInfo(valueInformation);
+	console.log(valueInformation)
+}
+
+
+const saveValue = async () => {
+	await bridge.send('VKWebAppStorageSet', {
+		key: valueInfoStorage,
+		value: 66
+	});
+}
 
 return (
 	<Panel id={props.id}>
@@ -144,6 +181,18 @@ return (
                     <Separator />
 				</Header>
             </div>
+			{(valueInfo) &&
+			<Fragment>
+				<Group>
+					{/* <Div className='User'>
+						<h2>Привет, {valueInfo.first_name}</h2>
+					</Div> */}
+					<Div>
+						<h2>Значение, {valueInfo}</h2>
+					</Div>
+				</Group>
+			</Fragment>
+			}
             <ArticleList articles={state.reverted ? articles.reverse() : articles} />
 			<Checkbox>Закрепить сообщение с запросом</Checkbox>
         </div>
