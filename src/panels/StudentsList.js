@@ -17,7 +17,7 @@ import Footer from '@vkontakte/vkui/dist/components/Footer/Footer';
 
 const osName = platform();
 // Список лекционных предметов
-const students = [
+let students = [
     {id: 1, name: "Акчурин Артем"},
     {id: 2, name: "Андриянова Анастасия"},
     {id: 3, name: "Анохин Данила"},
