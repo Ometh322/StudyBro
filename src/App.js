@@ -3,7 +3,6 @@ import bridge from '@vkontakte/vk-bridge';
 import View from '@vkontakte/vkui/dist/components/View/View';
 //import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
-
 import Home from './panels/Home';
 import Student from './panels/Student';
 import Alena from './panels/Alena';
@@ -14,6 +13,7 @@ import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
 import Groups from './panels/Groups';
 import StudentsList from './panels/StudentsList';
+import SessionSchedule from './panels/SessionSchedule';
 import { Group } from '@vkontakte/vkui';
 
 const App = () => {
@@ -50,6 +50,7 @@ const App = () => {
 			<AppInfo id='appinfo' go={go}/>
 			<Developers id='developers' go={go}/>
 			<StudentsList id='studentsList' go={go}/>
+			<SessionSchedule id='sessionschedule' go={go}/>
 			<Groups id='groups' go={go}/>
 		</View>
 	);

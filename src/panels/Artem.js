@@ -1,24 +1,15 @@
 import React, {useState} from 'react';
 // import PropTypes from 'prop-types';
-import { platform, IOS} from '@vkontakte/vkui';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
+import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Header, Textarea, Checkbox, Separator, CellButton } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import ArticleList from "../components/ArticleList"
 // import articles from "../components/fixtures"
-import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 import Icon16Search from '@vkontakte/icons/dist/16/search';
 // import IconNews from '@vkontakte/icons/dist/20/newsfeed_outline';
-import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
 // import View from '@vkontakte/vkui/dist/components/View/View';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Header from '@vkontakte/vkui/dist/components/Header/Header';
 // import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
-import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import articles1 from "../components/fixtures.json"
 import './Student.css';
