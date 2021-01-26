@@ -12,13 +12,13 @@ const SessionSchedule = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="home">
-			{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-			Назад
+				{osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+				Назад
 		</PanelHeaderButton>}
 		>
 			Расписание сессии
 		</PanelHeader>
-		<img className="SessionSchedule" src={session} alt="Session Schedule"/>
+		<img className="SessionSchedule" src={session} alt="Session Schedule" />
 	</Panel>
 );
 

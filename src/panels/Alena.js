@@ -11,19 +11,19 @@ const Alena = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="home">
-			{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-			Назад
-		</PanelHeaderButton>}
+				{osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+				Назад
+			</PanelHeaderButton>}
 		>
 			Голосование
 		</PanelHeader>
 		<Group>
-	   <List>
-		   <Cell>
-			   Предстоящих голосований пока нет
-		   </Cell>
-	   </List>
-   </Group>
+			<List>
+				<Cell>
+					Предстоящих голосований пока нет
+				</Cell>
+			</List>
+		</Group>
 	</Panel>
 );
 

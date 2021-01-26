@@ -21,7 +21,7 @@ const App = () => {
 	const [fetchedUser, setUser] = useState(null);
 
 	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
+		bridge.subscribe(({ detail: { type, data } }) => {
 			if (type === 'VKWebAppUpdateConfig') {
 				const schemeAttribute = document.createAttribute('scheme');
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
@@ -46,12 +46,12 @@ const App = () => {
 			<Alena id='alena' go={go} />
 			<HomeTasks id='HomeTasks' go={go} />
 			<Persik id='persik' go={go} />
-			<Lections id='lections' go={go}/>
-			<AppInfo id='appinfo' go={go}/>
-			<Developers id='developers' go={go}/>
-			<StudentsList id='studentsList' go={go}/>
-			<SessionSchedule id='sessionschedule' go={go}/>
-			<Groups id='groups' go={go}/>
+			<Lections id='lections' go={go} />
+			<AppInfo id='appinfo' go={go} />
+			<Developers id='developers' go={go} />
+			<StudentsList id='studentsList' go={go} />
+			<SessionSchedule id='sessionschedule' go={go} />
+			<Groups id='groups' go={go} />
 		</View>
 	);
 }

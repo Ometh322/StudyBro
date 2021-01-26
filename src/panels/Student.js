@@ -12,13 +12,13 @@ const Student = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="home">
-			{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-			Назад
+				{osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+				Назад
 		</PanelHeaderButton>}
 		>
 			Расписание занятий
 		</PanelHeader>
-		<img className="Student" src={student} alt="Student Vasya"/>
+		<img className="Student" src={student} alt="Student Vasya" />
 	</Panel>
 );
 

@@ -13,17 +13,17 @@ const Developers = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="appinfo">
-				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+				{osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
 				Назад
 			</PanelHeaderButton>}
 			right={<PanelHeaderButton onClick={props.go} data-to="home">
-				{<Icon24Home/>}
+				{<Icon24Home />}
 				На стартовую страницу
 			</PanelHeaderButton>}
 		>
 			Авторы приложения
 		</PanelHeader>
-		<img className="Developers" src={DevelopersList} alt="Developers"/>
+		<img className="Developers" src={DevelopersList} alt="Developers" />
 	</Panel>
 );
 
