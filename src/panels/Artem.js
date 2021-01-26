@@ -116,6 +116,7 @@ const revert = () => {
 		{
 			setArticles(articles.reverse().concat([inf]).reverse())
 		}
+		getValue()
 	}
 
 	//поиск новости
@@ -126,8 +127,6 @@ const revert = () => {
 		}));
 		console.log("search")
 	}
-	getValue()
-  }
 
 //поиск новости
 function searchTodo(titleIn) {
@@ -150,17 +149,17 @@ useEffect(() => {
 }, []);
 
 const getValue = async () => {
-	const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: [valueInfoStorage]});
-	setValueInfo(valueInformation);
-	console.log(valueInformation)
+	// const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: [valueInfoStorage]});
+	// setValueInfo(valueInformation);
+	// console.log(valueInformation)
 }
 
 
 const saveValue = async () => {
-	await bridge.send('VKWebAppStorageSet', {
-		key: valueInfoStorage,
-		value: 66
-	});
+	// await bridge.send('VKWebAppStorageSet', {
+	// 	key: valueInfoStorage,
+	// 	value: 66
+	// });
 }
 
 return (
@@ -225,6 +224,7 @@ function AddTodo({onCreate}) {
 			</Group>
 		)
 	}
+}
 
 	function SearchTodo({ onCreate }) {
 		const [value, setValue] = useState('')
@@ -248,5 +248,6 @@ function AddTodo({onCreate}) {
 		)
 	}
 }
+
 
 export default Persik;
