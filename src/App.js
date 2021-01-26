@@ -12,6 +12,7 @@ import Persik from './panels/Artem';
 import Lections from './panels/Lections';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
+import Golos from './panels/Golos';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -50,6 +51,7 @@ const App = () => {
 			<Lections id='lections' go={go}/>
 			<AppInfo id='appinfo' go={go}/>
 			<Developers id='developers' go={go}/>
+			<Golos id='golos' go={go} />
 		</View>
 	);
 }
