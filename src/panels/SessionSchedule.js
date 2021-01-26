@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { platform, IOS, Panel, PanelHeader, PanelHeaderButton } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import student from '../img/TimeTable.jpg';
+import session from '../img/SessionSchedule.jpg';
 import './Student.css';
 
 const osName = platform();
 
-const Student = props => (
+const SessionSchedule = props => (
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="home">
@@ -16,15 +16,15 @@ const Student = props => (
 				Назад
 		</PanelHeaderButton>}
 		>
-			Расписание занятий
+			Расписание сессии
 		</PanelHeader>
-		<img className="Student" src={student} alt="Student Vasya" />
+		<img className="SessionSchedule" src={session} alt="Session Schedule" />
 	</Panel>
 );
 
-Student.propTypes = {
+SessionSchedule.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
 };
 
-export default Student;
+export default SessionSchedule;

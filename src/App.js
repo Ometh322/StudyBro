@@ -3,25 +3,25 @@ import bridge from '@vkontakte/vk-bridge';
 import View from '@vkontakte/vkui/dist/components/View/View';
 //import ScreenSpinner from '@vkontakte/vkui/dist/components/ScreenSpinner/ScreenSpinner';
 import '@vkontakte/vkui/dist/vkui.css';
-
 import Home from './panels/Home';
 import Student from './panels/Student';
 import Alena from './panels/Alena';
 import HomeTasks from './panels/HomeTasks';
 import Persik from './panels/Artem';
-import Group from './panels/Group';
+import Lections from './panels/Lections';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
+import Groups from './panels/Groups';
+import StudentsList from './panels/StudentsList';
+import SessionSchedule from './panels/SessionSchedule';
+import { Group } from '@vkontakte/vkui';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
-	//const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-	//"deploy": "vk-miniapps-deploy"
-	//npm install
 
 	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
+		bridge.subscribe(({ detail: { type, data } }) => {
 			if (type === 'VKWebAppUpdateConfig') {
 				const schemeAttribute = document.createAttribute('scheme');
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
@@ -31,7 +31,6 @@ const App = () => {
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
-			//setPopout(null);
 		}
 		fetchData();
 	}, []);
@@ -47,9 +46,12 @@ const App = () => {
 			<Alena id='alena' go={go} />
 			<HomeTasks id='HomeTasks' go={go} />
 			<Persik id='persik' go={go} />
-			<Group id='group' go={go}/>
-			<AppInfo id='appinfo' go={go}/>
-			<Developers id='developers' go={go}/>
+			<Lections id='lections' go={go} />
+			<AppInfo id='appinfo' go={go} />
+			<Developers id='developers' go={go} />
+			<StudentsList id='studentsList' go={go} />
+			<SessionSchedule id='sessionschedule' go={go} />
+			<Groups id='groups' go={go} />
 		</View>
 	);
 }

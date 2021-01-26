@@ -8,7 +8,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 const osName = platform();
 
-// Список домашних заданий
+// Список лекционных предметов
 const thematics = [
   { id: 1, name: "Алгебра" },
   { id: 2, name: "Базы данных" },
@@ -69,17 +69,17 @@ class SimpleSearch extends React.Component {
   }
 }
 
-const HomeTasks = props => (
+const Lections = props => (
   <Panel id={props.id}>
     <PanelHeader
       left={<PanelHeaderButton onClick={props.go} data-to="home">
         {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
         Назад
-		</PanelHeaderButton>}
+      </PanelHeaderButton>}
     >
-      Домашние задания
+      Лекции
     </PanelHeader>
-    <Group header={<Header mode="secondary">домашнее задание</Header>}>
+    <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
       <File before={<Icon24Document />} controlSize="m">
         Выберите файл
       </File>
@@ -88,9 +88,9 @@ const HomeTasks = props => (
   </Panel>
 )
 
-HomeTasks.propTypes = {
+Lections.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
 
-export default HomeTasks
+export default Lections
