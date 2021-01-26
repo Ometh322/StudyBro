@@ -58,11 +58,6 @@ const thematics = [
     render() {
       return (
         <React.Fragment>
-          <PanelHeader
-            right={<PanelHeaderButton onClick={this.props.goHeaderSearch}><Icon24Document /></PanelHeaderButton>}
-          >
-            Выбор тематики
-          </PanelHeader>
           <Group>
             <Search value={this.state.search} onChange={this.onChange} after={null}/>  
             {this.thematics.length > 0 && this.thematics.map(thematic => <Cell key={thematic.id}>{thematic.name}</Cell>)}
