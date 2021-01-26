@@ -25,15 +25,7 @@ import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
 import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 
-import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
-import Icon16Add from '@vkontakte/icons/dist/16/add';
-import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
-
-
-
-
 import articles1 from "../components/fixtures.json"
-
 
 import './Student.css';
 
@@ -54,11 +46,6 @@ function getRandomInt(min, max) {
   
 // const handleClick = () => {
 // 	console.log('---', 'clicked')
-// 	// setArticles([{
-// 	// 	id: 6, date: "2020-12-01", 
-// 	// 	title: "Практическая работа", 
-// 	// 	text: "Практическая работа по экономике"
-// 	// }])
 // 	let inf = { //посмотреть что с ключами(id)
 // 		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
 // 		title: "Практическая работа", 
@@ -75,25 +62,6 @@ function getRandomInt(min, max) {
 // 	  )
 // 	}
 // };
-
-const handleClick = () => {
-	console.log('---', 'clicked')
-	let inf = { //посмотреть что с ключами(id)
-		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
-		title: "Практическая работа", 
-		text: "Практическая работа по экономике"
-	}	
-	if (text === 'Сортировать: сначала новые') {
-		setArticles(
-			articles.concat([inf])
-		  )
-	}
-	else {
-		setArticles(
-			articles.reverse().concat([inf]).reverse()
-	  )
-	}
-};
 
 
 //состояние (реверса)
