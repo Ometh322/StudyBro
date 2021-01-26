@@ -1,8 +1,5 @@
 import React, {useState} from 'react';
-
-
 // import PropTypes from 'prop-types';
-
 import { platform, IOS} from '@vkontakte/vkui';
 import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
 import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
@@ -10,8 +7,7 @@ import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import ArticleList from "../components/ArticleList"
-
-//import articles from "../components/fixtures"
+// import articles from "../components/fixtures"
 import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 import Icon16Search from '@vkontakte/icons/dist/16/search';
@@ -24,19 +20,8 @@ import Header from '@vkontakte/vkui/dist/components/Header/Header';
 import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
 import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
-
-// import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
-// import Icon16Add from '@vkontakte/icons/dist/16/add';
-// import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
-
-
-
-
 import articles1 from "../components/fixtures.json"
-
-
 import './Student.css';
-
 
 function Persik(props) {
 const [articles, setArticles] = React.useState(articles1)
@@ -47,8 +32,6 @@ const osName = platform();
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
   }
-
-
 
   //Чье это?? у меня не запустилось с этой штучкой
   
@@ -95,7 +78,6 @@ const handleClick = () => {
 	}
 };
 
-
 //состояние (реверса)
 let state = {
 	reverted: false,
@@ -103,7 +85,6 @@ let state = {
 	textClose: 'close'
 	// text: 'op'
 }
-
 
 //реверс списка
 const revert = () => {
@@ -132,7 +113,6 @@ function addTodo(titleIn) {
 	}
   }
 
-  
 //поиск новости
 function searchTodo(titleIn) {
 	setCopyArticles(articles);
@@ -142,16 +122,13 @@ function searchTodo(titleIn) {
 	  console.log("search")
   }
 
-
-
-
 return (
-
 	<Panel id={props.id}>
 		<PanelHeader
 			left={<PanelHeaderButton onClick={props.go} data-to="home">
-				{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-			</PanelHeaderButton>}
+			{osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+			Назад
+		</PanelHeaderButton>}
 		>
 			Новости
 		</PanelHeader>
@@ -170,7 +147,6 @@ return (
             <ArticleList articles={state.reverted ? articles.reverse() : articles} />
 			<Checkbox>Закрепить сообщение с запросом</Checkbox>
         </div>
-
 	</Panel>
 );
 
@@ -219,8 +195,6 @@ function SearchTodo({onCreate}) {
         </form>
     )
 }
-
 }
-
 
 export default Persik;
