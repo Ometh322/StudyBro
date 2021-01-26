@@ -12,13 +12,13 @@ import Persik from './panels/Artem';
 import Lections from './panels/Lections';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
+import Groups from './panels/Groups';
+import StudentsList from './panels/StudentsList';
+import { Group } from '@vkontakte/vkui';
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
-	//const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-	//"deploy": "vk-miniapps-deploy"
-	//npm install
 
 	useEffect(() => {
 		bridge.subscribe(({ detail: { type, data }}) => {
@@ -31,7 +31,6 @@ const App = () => {
 		async function fetchData() {
 			const user = await bridge.send('VKWebAppGetUserInfo');
 			setUser(user);
-			//setPopout(null);
 		}
 		fetchData();
 	}, []);
@@ -50,6 +49,8 @@ const App = () => {
 			<Lections id='lections' go={go}/>
 			<AppInfo id='appinfo' go={go}/>
 			<Developers id='developers' go={go}/>
+			<StudentsList id='studentsList' go={go}/>
+			<Groups id='groups' go={go}/>
 		</View>
 	);
 }

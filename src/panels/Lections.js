@@ -78,7 +78,6 @@ const thematics = [
   }
 
 const Lections = props => (
-
     <Panel id={props.id}>
         <PanelHeader
             left={<PanelHeaderButton onClick={props.go} data-to="home">

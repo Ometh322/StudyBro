@@ -54,6 +54,12 @@ const Home = ({ id, go, fetchedUser }) => (
 				  </Button>
 				</Div>
 
+				<Div>
+				  <Button size="xl" mode="secondary" onClick={go} data-to="groups">
+					Информация о группе
+				  </Button>
+				</Div>
+
 			    <Div>
 				  <Button size="xl" mode="secondary" onClick={go} data-to="appinfo">
 					О приложении
