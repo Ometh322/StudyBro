@@ -11,17 +11,21 @@ import Persik from './panels/Artem';
 import Lections from './panels/Lections';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
+
+import Golos from './panels/Golos';
+
 import Groups from './panels/Groups';
 import StudentsList from './panels/StudentsList';
 import SessionSchedule from './panels/SessionSchedule';
 import { Group } from '@vkontakte/vkui';
+
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 
 	useEffect(() => {
-		bridge.subscribe(({ detail: { type, data }}) => {
+		bridge.subscribe(({ detail: { type, data } }) => {
 			if (type === 'VKWebAppUpdateConfig') {
 				const schemeAttribute = document.createAttribute('scheme');
 				schemeAttribute.value = data.scheme ? data.scheme : 'client_light';
@@ -46,12 +50,18 @@ const App = () => {
 			<Alena id='alena' go={go} />
 			<HomeTasks id='HomeTasks' go={go} />
 			<Persik id='persik' go={go} />
+
 			<Lections id='lections' go={go}/>
 			<AppInfo id='appinfo' go={go}/>
 			<Developers id='developers' go={go}/>
-			<StudentsList id='studentsList' go={go}/>
-			<SessionSchedule id='sessionschedule' go={go}/>
-			<Groups id='groups' go={go}/>
+			<Golos id='golos' go={go} />
+			<Lections id='lections' go={go} />
+			<AppInfo id='appinfo' go={go} />
+			<Developers id='developers' go={go} />
+			<StudentsList id='studentsList' go={go} />
+			<SessionSchedule id='sessionschedule' go={go} />
+			<Groups id='groups' go={go} />
+
 		</View>
 	);
 }

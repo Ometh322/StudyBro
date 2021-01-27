@@ -14,51 +14,50 @@ const osName = platform();
 
 // Список студентов
 let students = [
-    {id: 1, name: "Акчурин Артем"},
-    {id: 2, name: "Андриянова Анастасия"},
-    {id: 3, name: "Анохин Данила"},
-    {id: 4, name: "Бахтин Егор"},
-    {id: 5, name: "Гношева Алена"},
-    {id: 6, name: "Горбачева Марина"},
-    {id: 7, name: "Григорьев Максим"},
-    {id: 8, name: "Громов Никита"},
-    {id: 9, name: "Климов Алексей"},
-    {id: 10, name: "Кобзырева Марина"},
-    {id: 11, name: "Копытов Михаил"},
-    {id: 12, name: "Кочемазов Василий"},
-    {id: 13, name: "Лалов Сергей"},
-    {id: 14, name: "Ларцев Александр"},
-    {id: 15, name: "Морозов Андрей"},
-    {id: 16, name: "Николаев Иван"},
-    {id: 17, name: "Остроухов Даниил"},
-    {id: 18, name: "Пантелеев Дмитрий"},
-    {id: 19, name: "Пелипец Владислав"},
-    {id: 20, name: "Растегаева Алина"},
-    {id: 21, name: "Родичкин Павел"},
-    {id: 22, name: "Слепов Илья"},
-    {id: 23, name: "Филатова Ольга"},
-    {id: 24, name: "Хмыров Артем"},
-    {id: 25, name: "Шелухин Андрей"},
-    {id: 26, name: "Юдин Павел"},
-  ];
+  { id: 1, name: "Акчурин Артем" },
+  { id: 2, name: "Андриянова Анастасия" },
+  { id: 3, name: "Анохин Данила" },
+  { id: 4, name: "Бахтин Егор" },
+  { id: 5, name: "Гношева Алена" },
+  { id: 6, name: "Горбачева Марина" },
+  { id: 7, name: "Григорьев Максим" },
+  { id: 8, name: "Громов Никита" },
+  { id: 9, name: "Климов Алексей" },
+  { id: 10, name: "Кобзырева Марина" },
+  { id: 11, name: "Копытов Михаил" },
+  { id: 12, name: "Кочемазов Василий" },
+  { id: 13, name: "Лалов Сергей" },
+  { id: 14, name: "Ларцев Александр" },
+  { id: 15, name: "Морозов Андрей" },
+  { id: 16, name: "Николаев Иван" },
+  { id: 17, name: "Остроухов Даниил" },
+  { id: 18, name: "Пантелеев Дмитрий" },
+  { id: 19, name: "Пелипец Владислав" },
+  { id: 20, name: "Растегаева Алина" },
+  { id: 21, name: "Родичкин Павел" },
+  { id: 22, name: "Слепов Илья" },
+  { id: 23, name: "Филатова Ольга" },
+  { id: 24, name: "Хмыров Артем" },
+  { id: 25, name: "Шелухин Андрей" },
+  { id: 26, name: "Юдин Павел" },
+];
 
 class SimpleSearch extends React.Component {
 
-    constructor (props) {
-      super(props);
-      this.state = {
-        search: ''
-      }
-      this.onChange = this.onChange.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = {
+      search: ''
     }
+    this.onChange = this.onChange.bind(this);
+  }
 
-    onChange (e) { this.setState({ search: e.target.value }); }
+  onChange(e) { this.setState({ search: e.target.value }); }
 
-    get students () {
-      const search = this.state.search.toLowerCase();
-      return students.filter(({name}) => name.toLowerCase().indexOf(search) > -1);
-    }
-
+  get students() {
+    const search = this.state.search.toLowerCase();
+    return students.filter(({ name }) => name.toLowerCase().indexOf(search) > -1);
+  }
     render() {
       return (
         <React.Fragment>
@@ -96,18 +95,6 @@ class StudentAdd extends React.Component {
     submitHandler(e){
       e.preventDefault()
     }
-
-    // AddStudent({onCreate}) {
-    //   const [value, setValue] = useState('')
-
-    //   function submitHandler(event) {
-    //     event.preventDefault()
-
-    //     if (value.trim()) {
-    //       onCreate(value)
-    //     }
-    //   }
-    // }
     render(){
       return (
           <React.Fragment>

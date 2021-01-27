@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, List, Group, Cell } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import {Icon24Education} from '@vkontakte/icons';
+import { Icon24Education } from '@vkontakte/icons';
 import '@vkontakte/vkui/dist/vkui.css';
 
 const osName = platform();
@@ -38,8 +38,8 @@ const osName = platform();
 )
 
 Groups.propTypes = {
-	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+  go: PropTypes.func.isRequired,
 };
 
 export default Groups
