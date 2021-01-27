@@ -90,6 +90,11 @@ class StudentAdd extends React.Component {
   submitHandler(e) {
     e.preventDefault()
   }
+
+  get students() {
+    return students;
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -98,8 +103,8 @@ class StudentAdd extends React.Component {
             <Textarea size='s'
               value={this.state.student} after={null} onChange={this.onChange} />
           </form>
-          <PanelHeaderButton onClick={this.addStudent(this.state.student)} onSubmit={this.submitHandler} > {<Icon16Add />} Добавить студента</PanelHeaderButton>
-          <Cell key={students.id}>{students.name}</Cell>
+            <PanelHeaderButton onMouseUp={this.addStudent(this.state.student), console.log("Тыкнули на кнопку")} > {<Icon16Add />} Добавить студента</PanelHeaderButton>
+            {/* {this.students.map(students => <Cell key={students.id}>{students.name}</Cell>)} */}
         </Group>
       </React.Fragment>
     );
