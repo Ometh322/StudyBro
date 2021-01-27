@@ -3,54 +3,29 @@ import React, { useState } from 'react';
 import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, List, Group, Cell, Header, Textarea, Checkbox, Separator, CellButton } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Icon24Home from '@vkontakte/icons/dist/24/home';
-import ArticleList from "../components/ArticleList"
-// import articles from "../components/fixtures"
 import Icon16Add from '@vkontakte/icons/dist/16/add';
-import Icon16Search from '@vkontakte/icons/dist/16/search';
-// import IconNews from '@vkontakte/icons/dist/20/newsfeed_outline';
-// import View from '@vkontakte/vkui/dist/components/View/View';
-// import Div from '@vkontakte/vkui/dist/components/Div/Div';
-// import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
+import Icon24Home from '@vkontakte/icons/dist/24/home';
+
 import variants1 from "../components/vars.json"
 import './Student.css';
 
 function Golos(props) {
-	const [variants, setVariants] = React.useState(variants1)
-	const osName = platform();
-
-	function getRandomInt(min, max) {
-		return Math.floor(Math.random() * (max - min)) + min;
-	}
-
-	// const handleClick = () => {
-	// 	console.log('---', 'clicked')
-	// 	let inf = { //посмотреть что с ключами(id)
-	// 		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
-	// 		title: "Практическая работа", 
-	// 		text: "Практическая работа по экономике"
-	// 	}	
-	// 	if (text === 'Сортировать: сначала новые') {
-	// 		setArticles(
-	// 			articles.concat([inf])
-	// 		  )
-	// 	}
-	// 	else {
-	// 		setArticles(
-	// 			articles.reverse().concat([inf]).reverse()
-	// 	  )
-	// 	}
-	// };
-
-	let state = {
+	let stat = {
 		vote: false
-
+	
 	}
+const [variants, setVariants] = React.useState(variants1)
+const [state, setState] = React.useState(stat)
+const osName = platform();
 
-	const voted = (VarId) => {
-		state.vote = true;
-		variants[VarId].count = variants[VarId].count + 1;
-		console.log(state.reverted)
+function getRandomInt(min, max) {
+	return Math.floor(Math.random() * (max - min)) + min;
+  }
+
+const voted = (VarId) => {
+    setState(state.vote,true);
+	variants[VarId].count=variants[VarId].count+1;
+	setVariants(variants)
 	}
 
 	//добавление новости
