@@ -10,7 +10,9 @@ import {
 	Icon28HomeOutline,
 	Icon24Dismiss,
 	Icon20CommunityName,
-	Icon20Info
+	Icon20Info,
+	Icon28UsersOutline,
+	Icon28InfoOutline
 } from '@vkontakte/icons';
 function Home(props) {
 	const platform = usePlatform();
@@ -121,13 +123,13 @@ return  (
 
 
 				<Div>
-					<Button before={<Icon28UsersOutline />} size="xl" mode="secondary" onClick={go} data-to="teachers">
+					<Button before={<Icon28UsersOutline />} size="xl" mode="secondary" onClick={props.go} data-to="teachers">
 						Список преподавателей
 				  	</Button>
 				</Div>
 
 				<Div>
-					<Button before={<Icon28InfoOutline />} size="xl" mode="secondary" onClick={go} data-to="appinfo">
+					<Button before={<Icon28InfoOutline />} size="xl" mode="secondary" onClick={props.go} data-to="appinfo">
 						О приложении
 				  	</Button>
 				</Div>
