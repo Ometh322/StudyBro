@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Search, Header, File, Cell, Footer } from '@vkontakte/vkui';
+import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Search, Header, Cell, Footer, CellButton} from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Icon24Document from '@vkontakte/icons/dist/24/document';
+import Icon24Add from '@vkontakte/icons/dist/24/add';
 import '@vkontakte/vkui/dist/vkui.css';
 
 const osName = platform();
@@ -75,14 +75,12 @@ const HomeTasks = props => (
       left={<PanelHeaderButton onClick={props.go} data-to="home">
         {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
         Назад
-		</PanelHeaderButton>}
+      </PanelHeaderButton>}
     >
       Домашние задания
     </PanelHeader>
-    <Group header={<Header mode="secondary">Загрузить домашнее задание</Header>}>
-      <File before={<Icon24Document />} controlSize="m">
-        Выберите файл
-      </File>
+    <Group header={<Header mode="secondary">Новые домашние задания</Header>}>
+      <CellButton centered before={<Icon24Add />} onClick={props.go} data-to="newHomeTask">Добавить домашнее задание</CellButton>
     </Group>
     <SimpleSearch />
   </Panel>

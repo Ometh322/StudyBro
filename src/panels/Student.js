@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, List, Group, Cell, Header } from '@vkontakte/vkui';
+import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, List, Group, Cell, Header, Checkbox } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import './Student.css';
@@ -17,6 +17,29 @@ const Student = props => (
 		>
 			Расписание занятий
 		</PanelHeader>
+		<Group header={<Header mode="secondary">неделя</Header>}>
+			<Cell before={<Checkbox>Числитель</Checkbox>}>
+				<Checkbox>Знаменатель</Checkbox>
+			</Cell>
+		</Group>
+		<Group header={<Header mode="secondary">подгруппа</Header>}>
+			<Cell before={<Checkbox>1ая подгруппа</Checkbox>}>
+				<Checkbox>2ая подгруппа</Checkbox>
+			</Cell>
+		</Group>
+		<Group header={<Header mode="secondary">группа по английскому</Header>}>
+			<Cell before={<Checkbox>1ая</Checkbox>}>
+				<Cell before={<Checkbox>2ая</Checkbox>}>
+					<Cell before={<Checkbox>3ья</Checkbox>}>
+						<Cell before={<Checkbox>4ая</Checkbox>}>
+							<Cell before={<Checkbox>5ая</Checkbox>}>
+								<Checkbox>6ая</Checkbox>
+							</Cell>
+						</Cell>
+					</Cell>
+				</Cell>
+			</Cell>
+		</Group>
 		<Group header={<Header mode="secondary">понедельник</Header>}>
 			<List>
 				<Cell>

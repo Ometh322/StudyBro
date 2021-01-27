@@ -9,7 +9,6 @@ import './Student.css';
 
 const osName = platform();
 class Loading extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -26,11 +25,11 @@ class Loading extends React.Component {
     return (
       <View popout={this.state.popout} activePanel="spinner">
         <Panel id="spinner">
-          <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
+          <Group header={<Header mode="secondary">Загрузите домашние задания</Header>}>
             <Div>
               <File before={<Icon24Document />} controlSize="m">
                 Выберите файл
-                     </File>
+              </File>
             </Div>
             <Div>
               <Input type="text" defaultValue="Введите ФИО" />
@@ -56,17 +55,17 @@ class Loading extends React.Component {
               </Select>
             </Div>
             <CellButton onClick={this.onClick.bind(this)}>Загрузить</CellButton>
-
           </Group>
         </Panel>
       </View>
     )
   }
 }
-const NewLection = props => (
+
+const NewHomeTask = props => (
   <Panel id={props.id}>
     <PanelHeader
-      left={<PanelHeaderButton onClick={props.go} data-to="lections">
+      left={<PanelHeaderButton onClick={props.go} data-to="HomeTasks">
         {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
 				Назад
 			</PanelHeaderButton>}
@@ -75,15 +74,15 @@ const NewLection = props => (
         На стартовую страницу
       </PanelHeaderButton>}
     >
-      Новые лекции
+      Новые домашние задания
 		</PanelHeader>
     <Loading />
   </Panel>
 );
 
-NewLection.propTypes = {
+NewHomeTask.propTypes = {
   id: PropTypes.string.isRequired,
   go: PropTypes.func.isRequired,
 };
 
-export default NewLection;
+export default NewHomeTask
