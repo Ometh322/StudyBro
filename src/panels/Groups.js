@@ -9,32 +9,32 @@ import '@vkontakte/vkui/dist/vkui.css';
 const osName = platform();
 
 // Список учебных групп
-  const Groups = props => (
-    <Panel id={props.id}>
-        <PanelHeader
-            left={<PanelHeaderButton onClick={props.go} data-to="home">
-              {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-              Назад
-            </PanelHeaderButton>}>
-            Список учебных групп
+const Groups = props => (
+  <Panel id={props.id}>
+    <PanelHeader
+      left={<PanelHeaderButton onClick={props.go} data-to="home">
+        {osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
+        Назад
+      </PanelHeaderButton>}>
+      Список учебных групп
         </PanelHeader>
-        <Group> 
-            <List>
-              <Cell>
-                    <PanelHeaderButton onClick={props.go} data-to="studentsList">
-				              {osName === IOS ? <Icon24Education/> : <Icon24Education/>}
-				                311 группа
-			              </PanelHeaderButton>
-              </Cell>
-              {/* <Cell>
-                      <PanelHeaderButton onClick={props.go} data-to="studentsList">
-				              {osName === IOS ? <Icon24Education/> : <Icon24Education/>}
-				                351 группа
-			                </PanelHeaderButton>
-              </Cell> */}
-            </List>
-        </Group>
-    </Panel>
+    <Group>
+      <List>
+        <Cell>
+          <PanelHeaderButton onClick={props.go} data-to="studentsList">
+            {osName === IOS ? <Icon24Education /> : <Icon24Education />}
+            311 группа
+			    </PanelHeaderButton>
+        </Cell>
+        {/* <Cell>
+          <PanelHeaderButton onClick={props.go} data-to="studentsList">
+            {osName === IOS ? <Icon24Education /> : <Icon24Education />}
+            351 группа
+			    </PanelHeaderButton>
+        </Cell> */}
+      </List>
+    </Group>
+  </Panel>
 )
 
 Groups.propTypes = {

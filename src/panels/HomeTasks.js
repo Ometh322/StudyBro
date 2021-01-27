@@ -79,7 +79,7 @@ const HomeTasks = props => (
     >
       Домашние задания
     </PanelHeader>
-    <Group header={<Header mode="secondary">домашнее задание</Header>}>
+    <Group header={<Header mode="secondary">Загрузить домашнее задание</Header>}>
       <File before={<Icon24Document />} controlSize="m">
         Выберите файл
       </File>

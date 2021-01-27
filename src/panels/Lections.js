@@ -79,7 +79,7 @@ const Lections = props => (
     >
       Лекции
     </PanelHeader>
-    <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
+    <Group header={<Header mode="secondary">Загрузить лекции</Header>}>
       <File before={<Icon24Document />} controlSize="m">
         Выберите файл
       </File>
