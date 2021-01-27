@@ -1,32 +1,84 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, List, Group, Cell } from '@vkontakte/vkui';
+import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group,Header, File, Select, Div, ScreenSpinner, View, CellButton} from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
+import Icon24Document from '@vkontakte/icons/dist/24/document';
 import './Student.css';
 
-const osName = platform();
 
+const osName = platform();
+class Loading extends React.Component {
+
+    constructor (props) {
+    super(props);
+      this.state = {
+        popout: null
+      }
+    }
+  
+    onClick () {
+      this.setState({ popout: <ScreenSpinner /> });
+      setTimeout(() => { this.setState({ popout: null }) }, 2000);
+    }
+  
+    render () {
+      return (
+        <View popout={this.state.popout} activePanel="spinner">
+          <Panel id="spinner">
+            <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
+          <Div>
+          <File before={<Icon24Document />} controlSize="m">
+        Выберите файл
+      </File>
+      </Div>
+      <Div>
+      <Select  placeholder="Выберите предмет" >
+        
+          <option value="1">Алгебра</option>
+          <option value="2">Базы данных</option>
+          <option value="3">Введение в экономику</option>
+          <option value="4">Дискретная математика</option>
+          <option value="5">Дифференциальные уравнения</option>
+          <option value="6">Информатика и программирование</option>
+          <option value="7">История</option>
+          <option value="8">Компьютерная графика</option>
+          <option value="9">Компьютерные сети</option>
+          <option value="10">Математический анализ</option>
+          <option value="11">Методы вычислений</option>
+          <option value="12">Операционные системы</option>
+          <option value="13">Педагокика и психология</option>
+          <option value="14">Теория графов</option>
+          <option value="15">Физика</option>
+          <option value="16">Философия</option>
+
+
+        </Select>
+        </Div>
+        
+    
+              <CellButton onClick={this.onClick.bind(this)}>Загрузить</CellButton>
+              
+            </Group>
+          </Panel>
+        </View>
+      )
+    }
+  }
 const NewLection = props => (
 	<Panel id={props.id}>
 		<PanelHeader
-			left={<PanelHeaderButton onClick={props.go} data-to="home">
+			left={<PanelHeaderButton onClick={props.go} data-to="lections">
 				{osName === IOS ? <Icon28ChevronBack /> : <Icon24Back />}
 				Назад
-			</PanelHeaderButton>}
-		>
-			Голосование
+			</PanelHeaderButton>}>
+			Новые лекции
 		</PanelHeader>
-		<Group>
-			<List>
-				<Cell>
-					Предстоящих голосований пока нет
-				</Cell>
-			</List>
-		</Group>
+        <Loading />
 	</Panel>
 );
 
+  
 NewLection.propTypes = {
 	id: PropTypes.string.isRequired,
 	go: PropTypes.func.isRequired,
