@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Search, Header, File, Cell, Footer } from '@vkontakte/vkui';
+import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Search, Header, Cell, Footer, CellButton} from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
-import Icon24Document from '@vkontakte/icons/dist/24/document';
+import Icon24Add from '@vkontakte/icons/dist/24/add';
+
 import '@vkontakte/vkui/dist/vkui.css';
 
 const osName = platform();
@@ -79,14 +80,15 @@ const Lections = props => (
     >
       Лекции
     </PanelHeader>
-    <Group header={<Header mode="secondary">Загрузите лекции</Header>}>
-      <File before={<Icon24Document />} controlSize="m">
-        Выберите файл
-      </File>
+
+    <Group header={<Header mode="secondary">Новые лекции</Header>}>
+      <CellButton centered before={<Icon24Add />} onClick={props.go} data-to="newLection">Добавить лекцию</CellButton>
     </Group>
     <SimpleSearch />
   </Panel>
 )
+
+
 
 Lections.propTypes = {
   id: PropTypes.string.isRequired,

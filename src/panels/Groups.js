@@ -17,21 +17,21 @@ const Groups = props => (
         Назад
       </PanelHeaderButton>}>
       Список учебных групп
-    </PanelHeader>
+        </PanelHeader>
     <Group>
       <List>
         <Cell>
           <PanelHeaderButton onClick={props.go} data-to="studentsList">
             {osName === IOS ? <Icon24Education /> : <Icon24Education />}
             311 группа
-			     </PanelHeaderButton>
+			    </PanelHeaderButton>
         </Cell>
-        <Cell>
+        {/* <Cell>
           <PanelHeaderButton onClick={props.go} data-to="studentsList">
             {osName === IOS ? <Icon24Education /> : <Icon24Education />}
             351 группа
 			    </PanelHeaderButton>
-        </Cell>
+        </Cell> */}
       </List>
     </Group>
   </Panel>
