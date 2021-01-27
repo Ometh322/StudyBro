@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Search, Header, File, Cell, Footer } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
@@ -6,6 +6,9 @@ import Icon24Back from '@vkontakte/icons/dist/24/back';
 import Icon24Document from '@vkontakte/icons/dist/24/document';
 import Icon24Home from '@vkontakte/icons/dist/24/home';
 import '@vkontakte/vkui/dist/vkui.css';
+import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
+import Icon16Add from '@vkontakte/icons/dist/16/add';
+import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
 
 const osName = platform();
 
@@ -67,35 +70,89 @@ class SimpleSearch extends React.Component {
         </React.Fragment>
       );
     }
-  }
+    
+    
 
-  const StudentsList = props => (
-    <Panel id={props.id}>
-        <PanelHeader
-        left={<PanelHeaderButton onClick={props.go} data-to="groups">
-          {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
-          Назад
-        </PanelHeaderButton>}
-        right={<PanelHeaderButton onClick={props.go} data-to="home">
-				  {<Icon24Home/>}
-				  На стартовую страницу
-			  </PanelHeaderButton>}
-		    >
-            Список студентов группы
-        </PanelHeader>
-        <Group header={<Header mode="secondary">Загрузить список студентов</Header>}> 
-          <File before={<Icon24Document />} controlSize="m">
-            Выберите файл
-          </File>
-          
-        </Group>
-        <SimpleSearch/>
-    </Panel>
+}
+
+class StudentAdd extends React.Component {
+    constructor(props){
+      super(props);
+      this.state = {
+          student: ''
+        }
+      this.onChange = this.onChange.bind(this);
+    }
+    onChange (e) {this.setState({ student: e.target.value });  }
+    addStudent(nameIn) {
+      let inf = {
+          id:   students.length + 1, 
+          name: nameIn
+        }
+        students = students.concat([inf])
+        console.log(students)
+    }
+    
+    submitHandler(e){
+      e.preventDefault()
+    }
+
+    // AddStudent({onCreate}) {
+    //   const [value, setValue] = useState('')
+
+    //   function submitHandler(event) {
+    //     event.preventDefault()
+
+    //     if (value.trim()) {
+    //       onCreate(value)
+    //     }
+    //   }
+    // }
+    render(){
+      return (
+          <React.Fragment>
+            <Group>
+              <form style={{marginBottom: '1rem'}}>
+                <Textarea size ='s'
+                          value={this.state.student}  after={null} onChange={this.onChange}/>
+              </form>
+              <PanelHeaderButton onClick={this.addStudent(this.state.student)} onSubmit={this.submitHandler} > {<Icon16Add/>} Добавить студента</PanelHeaderButton>
+              <Cell key={students.id}>{students.name}</Cell>
+            </Group>
+          </React.Fragment>
+      );
+    }
+}
+
+  
+const StudentsList = props => (
+  <Panel id={props.id}>
+      <PanelHeader
+      left={<PanelHeaderButton onClick={props.go} data-to="groups">
+        {osName === IOS ? <Icon28ChevronBack/> : <Icon24Back/>}
+        Назад
+      </PanelHeaderButton>}
+      right={<PanelHeaderButton onClick={props.go} data-to="home">
+        {<Icon24Home/>}
+        На стартовую страницу
+      </PanelHeaderButton>}
+      >
+          Список студентов группы
+      </PanelHeader>
+      
+      <Group header={<Header mode="secondary">Загрузить список студентов</Header>}> 
+        <File before={<Icon24Document />} controlSize="m">
+          Выберите файл
+        </File>
+      </Group>
+      <StudentAdd/>
+      <SimpleSearch/>
+  </Panel>
 )
+  StudentsList.propTypes = {
+    id: PropTypes.string.isRequired,
+    go: PropTypes.func.isRequired,
+  };
 
-StudentsList.propTypes = {
-	id: PropTypes.string.isRequired,
-	go: PropTypes.func.isRequired,
-};
-
+// }
 export default StudentsList

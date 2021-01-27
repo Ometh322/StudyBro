@@ -26,12 +26,12 @@ const osName = platform();
 				                311 группа
 			              </PanelHeaderButton>
               </Cell>
-              <Cell>
+              {/* <Cell>
                       <PanelHeaderButton onClick={props.go} data-to="studentsList">
 				              {osName === IOS ? <Icon24Education/> : <Icon24Education/>}
 				                351 группа
 			                </PanelHeaderButton>
-              </Cell>
+              </Cell> */}
             </List>
         </Group>
     </Panel>
