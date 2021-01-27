@@ -9,12 +9,13 @@ import Alena from './panels/Alena';
 import HomeTasks from './panels/HomeTasks';
 import Persik from './panels/Artem';
 import Lections from './panels/Lections';
+import NewLection from './panels/NewLection';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
 import Groups from './panels/Groups';
 import StudentsList from './panels/StudentsList';
 import SessionSchedule from './panels/SessionSchedule';
-import { Group } from '@vkontakte/vkui';
+
 
 const App = () => {
 	const [activePanel, setActivePanel] = useState('home');
@@ -47,6 +48,7 @@ const App = () => {
 			<HomeTasks id='HomeTasks' go={go} />
 			<Persik id='persik' go={go} />
 			<Lections id='lections' go={go} />
+			<NewLection id='newLection' go={go} />
 			<AppInfo id='appinfo' go={go} />
 			<Developers id='developers' go={go} />
 			<StudentsList id='studentsList' go={go} />
