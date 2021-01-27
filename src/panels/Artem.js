@@ -1,33 +1,36 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, Fragment } from 'react';
+
 // import PropTypes from 'prop-types';
-import { platform, IOS} from '@vkontakte/vkui';
-import Panel from '@vkontakte/vkui/dist/components/Panel/Panel';
-import PanelHeader from '@vkontakte/vkui/dist/components/PanelHeader/PanelHeader';
-import PanelHeaderButton from '@vkontakte/vkui/dist/components/PanelHeaderButton/PanelHeaderButton';
+import { platform, IOS, Panel, PanelHeader, PanelHeaderButton, Group, Header, Textarea, Checkbox, Separator, CellButton } from '@vkontakte/vkui';
 import Icon28ChevronBack from '@vkontakte/icons/dist/28/chevron_back';
 import Icon24Back from '@vkontakte/icons/dist/24/back';
 import ArticleList from "../components/ArticleList"
 // import articles from "../components/fixtures"
-import CellButton from '@vkontakte/vkui/dist/components/CellButton/CellButton';
 import Icon16Add from '@vkontakte/icons/dist/16/add';
 import Icon16Search from '@vkontakte/icons/dist/16/search';
 // import IconNews from '@vkontakte/icons/dist/20/newsfeed_outline';
-import Separator from '@vkontakte/vkui/dist/components/Separator/Separator';
 // import View from '@vkontakte/vkui/dist/components/View/View';
-import Group from '@vkontakte/vkui/dist/components/Group/Group';
-import Header from '@vkontakte/vkui/dist/components/Header/Header';
 // import Div from '@vkontakte/vkui/dist/components/Div/Div';
-import Textarea from '@vkontakte/vkui/dist/components/Textarea/Textarea';
-import Checkbox from '@vkontakte/vkui/dist/components/Checkbox/Checkbox';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
 import articles1 from "../components/fixtures.json"
+import bridge from '@vkontakte/vk-bridge';
+import Div from '@vkontakte/vkui/dist/components/Div/Div';
 import './Student.css';
 
+
+let STORAGE_KEYS = {
+	VALUE: 11
+}
+
+
 function Persik(props) {
+
 const [articles, setArticles] = React.useState(articles1)
 const [copyArticles, setCopyArticles] = React.useState(articles)
 const [text, setText] = React.useState('Сортировать: сначала новые')
+const [valueInfo, setValueInfo] = React.useState(1)
 const osName = platform();
+
 
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
@@ -59,32 +62,33 @@ function getRandomInt(min, max) {
 // 	}
 // };
 
-const handleClick = () => {
-	console.log('---', 'clicked')
-	let inf = { //посмотреть что с ключами(id)
-		id:   getRandomInt(30, 1000000), date: "2020-12-06", 
-		title: "Практическая работа", 
-		text: "Практическая работа по экономике"
-	}	
-	if (text === 'Сортировать: сначала новые') {
-		setArticles(
-			articles.concat([inf])
-		  )
-	}
-	else {
-		setArticles(
-			articles.reverse().concat([inf]).reverse()
-	  )
-	}
-};
 
-//состояние (реверса)
-let state = {
-	reverted: false,
-	textOpen: 'open',
-	textClose: 'close'
-	// text: 'op'
-}
+	const handleClick = () => {
+		console.log('---', 'clicked')
+		let inf = { //посмотреть что с ключами(id)
+			id: getRandomInt(30, 1000000), date: "2020-12-06",
+			title: "Практическая работа",
+			text: "Практическая работа по экономике"
+		}
+		if (text === 'Сортировать: сначала новые') {
+			setArticles(
+				articles.concat([inf])
+			)
+		}
+		else {
+			setArticles(
+				articles.reverse().concat([inf]).reverse()
+			)
+		}
+	};
+
+	//состояние (реверса)
+	let state = {
+		reverted: false,
+		textOpen: 'open',
+		textClose: 'close'
+		// text: 'op'
+	}
 
 //реверс списка
 const revert = () => {
@@ -92,26 +96,37 @@ const revert = () => {
 	// state.text = state.reverted ? state.textOpen : state.textClose
 	state.reverted = !state.reverted;
 	text === 'Сортировать: сначала старые' ? setText('Сортировать: сначала новые') : setText('Сортировать: сначала старые')
-	console.log(state.reverted)
+	//console.log(state.reverted)
 	// console.log(state.text)
+	saveValue()
 	}
 
-//добавление новости
-function addTodo(titleIn) {
-	let inf = { //посмотреть что с ключами(id)
-		id:   getRandomInt(30, 1000000), date: "2020-12-05", 
-		title: titleIn, 
-		text: "Новость в разработке"
+	//добавление новости
+	function addTodo(titleIn) {
+		let inf = { //посмотреть что с ключами(id)
+			id: getRandomInt(30, 1000000), date: "2020-12-05",
+			title: titleIn,
+			text: "Новость в разработке"
+		}
+		if (text === 'Сортировать: сначала новые') //новости в правильном порядке (добавление в конец)
+		{
+			setArticles(articles.concat([inf]))
+		}
+		else //новости в неправильном порядке (добавление в начало)
+		{
+			setArticles(articles.reverse().concat([inf]).reverse())
+		}
+		getValue()
 	}
-	if (text === 'Сортировать: сначала новые') //новости в правильном порядке (добавление в конец)
-	{
-		setArticles(articles.concat([inf]))
-	} 
-	else //новости в неправильном порядке (добавление в начало)
-	{
-		setArticles(articles.reverse().concat([inf]).reverse())
+
+	//поиск новости
+	function searchTodo(titleIn) {
+		setCopyArticles(articles);
+		setArticles(copyArticles.filter(function (x) {
+			return x.title.toLowerCase().includes(titleIn.toLowerCase());
+		}));
+		console.log("search")
 	}
-  }
 
 //поиск новости
 function searchTodo(titleIn) {
@@ -121,6 +136,31 @@ function searchTodo(titleIn) {
 	  }));
 	  console.log("search")
   }
+
+
+useEffect(() => {
+	async function fetchData() {
+		//const user = await bridge.send('VKWebAppGetUserInfo');
+		//setValueInfo(user);
+		const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: STORAGE_KEYS.VALUE});
+		setValueInfo(valueInformation);
+	}
+	fetchData();
+}, []);
+
+const getValue = async () => {
+	// const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: [valueInfoStorage]});
+	// setValueInfo(valueInformation);
+	// console.log(valueInformation)
+}
+
+
+const saveValue = async () => {
+	// await bridge.send('VKWebAppStorageSet', {
+	// 	key: valueInfoStorage,
+	// 	value: 66
+	// });
+}
 
 return (
 	<Panel id={props.id}>
@@ -144,6 +184,18 @@ return (
                     <Separator />
 				</Header>
             </div>
+			{(valueInfo) &&
+			<Fragment>
+				<Group>
+					{/* <Div className='User'>
+						<h2>Привет, {valueInfo.first_name}</h2>
+					</Div> */}
+					<Div>
+						<h2>Значение, {valueInfo}</h2>
+					</Div>
+				</Group>
+			</Fragment>
+			}
             <ArticleList articles={state.reverted ? articles.reverse() : articles} />
 			<Checkbox>Закрепить сообщение с запросом</Checkbox>
         </div>
@@ -161,40 +213,42 @@ function AddTodo({onCreate}) {
 		}
 	}
 
-    return (
-		<Group>
-			  
-          <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
-			<Textarea size ='s'
-			defaultValue="Сообщите нам что-то важное!"
-            input value={value} onChange={event => setValue(event.target.value)} />
-			<CellButton  before={<Icon16Add/>} > Добавить новость</CellButton>
-          </form>
-		</Group>
-    )
-}
+		return (
+			<Group>
 
-function SearchTodo({onCreate}) {
-	const [value, setValue] = useState('')
-
-	function submitHandler(event) {
-		event.preventDefault()
-
-		if (value.trim()) {
-			onCreate(value)
-		}
+				<form style={{ marginBottom: '1rem' }} onSubmit={submitHandler}>
+					<Textarea size='s'
+						defaultValue="Сообщите нам что-то важное!"
+						input value={value} onChange={event => setValue(event.target.value)} />
+					<CellButton before={<Icon16Add />} > Добавить новость</CellButton>
+				</form>
+			</Group>
+		)
 	}
 
-    return (
-        <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
-           <Textarea
-		    input value={value} onChange={event => setValue(event.target.value)}
-			/>
-              <CellButton before={<Icon16Search/>}size="l">Найти новость</CellButton>
 
-        </form>
-    )
+	function SearchTodo({ onCreate }) {
+		const [value, setValue] = useState('')
+
+		function submitHandler(event) {
+			event.preventDefault()
+
+			if (value.trim()) {
+				onCreate(value)
+			}
+		}
+
+		return (
+			<form style={{ marginBottom: '1rem' }} onSubmit={submitHandler}>
+				<Textarea
+					input value={value} onChange={event => setValue(event.target.value)}
+				/>
+				<CellButton before={<Icon16Search />} size="l">Найти новость</CellButton>
+
+			</form>
+		)
+	}
 }
-}
+
 
 export default Persik;
