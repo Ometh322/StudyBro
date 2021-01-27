@@ -25,7 +25,7 @@ function Persik(props) {
 	const [articles, setArticles] = React.useState(articles1)
 	const [copyArticles, setCopyArticles] = React.useState(articles)
 	const [text, setText] = React.useState('Сортировать: сначала новые')
-	const [valueInfo, setValueInfo] = React.useState(1)
+	const [valueInfo, setValueInfo] = React.useState()
 	const osName = platform();
 
 
@@ -33,7 +33,6 @@ function Persik(props) {
 		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
-	//Чье это?? у меня не запустилось с этой штучкой
 
 	// const handleClick = () => {
 	// 	console.log('---', 'clicked')
@@ -94,25 +93,34 @@ function Persik(props) {
 		text === 'Сортировать: сначала старые' ? setText('Сортировать: сначала новые') : setText('Сортировать: сначала старые')
 		//console.log(state.reverted)
 		// console.log(state.text)
-		saveValue()
+		//saveValue()
+		incValue()
 	}
 
 	//добавление новости
 	function addTodo(titleIn) {
 		let inf = { //посмотреть что с ключами(id)
-			id: getRandomInt(30, 1000000), date: "2020-12-05",
+			id: getRandomInt(30, 1000000), date: "2021-01-27",
 			title: titleIn,
 			text: "Новость в разработке"
 		}
 		if (text === 'Сортировать: сначала новые') //новости в правильном порядке (добавление в конец)
 		{
+			let art = articles.concat([inf])
 			setArticles(articles.concat([inf]))
+			//добавление новости в хранилище
+			addNewsStorage(art)
 		}
 		else //новости в неправильном порядке (добавление в начало)
 		{
+			let art = articles.reverse().concat([inf]).reverse()
 			setArticles(articles.reverse().concat([inf]).reverse())
+			//добавление новости в хранилище
+			addNewsStorage(art)
 		}
-		getValue()
+		//getValue()
+
+		
 	}
 
 	//поиск новости
@@ -135,25 +143,103 @@ function Persik(props) {
 
 	useEffect(() => {
 		async function fetchData() {
-			//const user = await bridge.send('VKWebAppGetUserInfo');
-			//setValueInfo(user);
-			const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: STORAGE_KEYS.VALUE });
-			setValueInfo(valueInformation);
-		}
+
+		const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: ['valueInfoStorage', 'arrayNews']});
+		//setValueInfo(valueInformation);
+		const data = {};
+		let a
+		let arrNews
+		valueInformation.keys.forEach(({ key, value }) => {
+			//data[key] = value;
+			data[key] = value ? JSON.parse(value) : {};
+						switch (key) {
+							case 'valueInfoStorage':
+								console.log(data['valueInfoStorage']);
+								a = data['valueInfoStorage']
+								setValueInfo(a);
+								break;
+							case 'arrayNews':
+								if (data[key]) {
+								console.log(data['arrayNews']);
+								arrNews = data['arrayNews']
+								console.log('массив Новостей:')
+								// let art = JSON.parse(arrNews)
+								let art = arrNews
+								setArticles(art)
+								console.log(art)
+								}
+								break;
+							default:
+								break;
+						}
+		});
+	}
+
 		fetchData();
 	}, []);
 
 	const getValue = async () => {
-		// const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: [valueInfoStorage]});
-		// setValueInfo(valueInformation);
-		// console.log(valueInformation)
+		const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: ['valueInfoStorage']});
+		//setValueInfo(valueInformation);
+		const data = {};
+		valueInformation.keys.forEach(({ key, value }) => {
+			data[key] = value;
+						switch (key) {
+							case 'valueInfoStorage':
+								console.log(data['valueInfoStorage']);
+								setValueInfo(data['valueInfoStorage']);
+								break;
+							default:
+								break;
+						}
+		});
+		//console.log(valueInformation.keys)
 	}
 
 	const saveValue = async () => {
-		// await bridge.send('VKWebAppStorageSet', {
-		// 	key: valueInfoStorage,
-		// 	value: 66
-		// });
+		await bridge.send('VKWebAppStorageSet', {
+			key: 'valueInfoStorage',
+			value: 66
+		});
+		console.log();
+	}
+
+	//добавление новости в хранилище
+	const addNewsStorage = async (arr) => {
+		await bridge.send('VKWebAppStorageSet', {
+			key: 'arrayNews',
+			value: JSON.stringify(arr)
+		});
+		console.log(JSON.stringify(arr));
+	}
+
+	const incValue = async () => {
+		const valueInformation = await bridge.send('VKWebAppStorageGet', { keys: ['valueInfoStorage']});
+		//setValueInfo(valueInformation);
+		const data = {};
+		let a
+		valueInformation.keys.forEach(({ key, value }) => {
+			data[key] = value;
+						switch (key) {
+							case 'valueInfoStorage':
+								console.log(data['valueInfoStorage']);
+								a = data['valueInfoStorage']
+								//setValueInfo(data['valueInfoStorage']);
+								break;
+							default:
+								break;
+						}
+		});
+
+		a = Number.parseInt(a) + 1;
+		a = a + ""
+		setValueInfo(a)
+
+		await bridge.send('VKWebAppStorageSet', {
+			key: 'valueInfoStorage',
+			value: a
+		});
+		console.log();
 	}
 
 	return (
@@ -185,7 +271,7 @@ function Persik(props) {
 						<h2>Привет, {valueInfo.first_name}</h2>
 					</Div> */}
 							<Div>
-								<h2>Значение, {valueInfo}</h2>
+								<h6>Всего новостей - {valueInfo}</h6>
 							</Div>
 						</Group>
 					</Fragment>
