@@ -11,9 +11,11 @@ import Icon16Search from '@vkontakte/icons/dist/16/search';
 // import View from '@vkontakte/vkui/dist/components/View/View';
 // import Div from '@vkontakte/vkui/dist/components/Div/Div';
 // import FixedLayout from '@vkontakte/vkui/dist/components/FixedLayout/FixedLayout';
+
 import articles1 from "../components/fixtures.json"
 import bridge from '@vkontakte/vk-bridge';
 import Div from '@vkontakte/vkui/dist/components/Div/Div';
+
 import './Student.css';
 
 let STORAGE_KEYS = {
