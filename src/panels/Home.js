@@ -5,6 +5,7 @@ import {
 	Icon28NewsfeedOutline,
 	Icon28ListOutline,
 	Icon28Users3Outline,
+	Icon28UsersOutline,
 	Icon28InfoOutline,
 	Icon28PollSquareOutline,
 	Icon28SchoolOutline,
@@ -65,6 +66,12 @@ const Home = ({ id, go, fetchedUser }) => (
 				<Div>
 					<Button before={<Icon28Users3Outline />} size="xl" mode="secondary" onClick={go} data-to="groups">
 						Информация об учебных группах
+				  	</Button>
+				</Div>
+
+				<Div>
+					<Button before={<Icon28UsersOutline />} size="xl" mode="secondary" onClick={go} data-to="teachers">
+						Список преподавателей
 				  	</Button>
 				</Div>
 

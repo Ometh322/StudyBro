@@ -13,6 +13,7 @@ import Alena from './panels/Alena';
 import Golos from './panels/Golos';
 import Groups from './panels/Groups';
 import StudentsList from './panels/StudentsList';
+import Teachers from './panels/Teachers';
 import AppInfo from './panels/AppInfo';
 import Developers from './panels/Developers';
 
@@ -51,6 +52,7 @@ const App = () => {
 			<Golos id='golos' go={go} />
 			<Groups id='groups' go={go} />
 			<StudentsList id='studentsList' go={go} />
+			<Teachers id='teachers' go={go} />
 			<AppInfo id='appinfo' go={go} />
 			<Developers id='developers' go={go} />
 		</View>
